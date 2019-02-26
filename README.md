@@ -1,9 +1,9 @@
-# Machine Learning Malware Classifyer Backend (MLMCB)
+# Machine Learning Malware Classifyer (MLMC)
 
 ## What is this?
-This is backend for machine learning classifier of malwares. It can classify given PE file as malicious or legitimate with a probability (from 0.0 to 1.0). 
+This is the app for classifying of malwares using machine learning approach. It uses trained neural network to classify given PE file as malicious or legitimate.
 
-Currently MLMCB implements approach of static analysis of files - it collects some static parameters of file, that are then fed into neural network, which was previously trained on a tousands of malicious and legitimate samples. 
+Currently MLMC implements approach of static analysis of files - it collects some static parameters of file, that are then fed into neural network, which was previously trained on a tousands of malicious and legitimate samples. 
 
 
 *Note: code not fully ported to Linux.*  

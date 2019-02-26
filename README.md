@@ -5,6 +5,7 @@ This is backend for machine learning classifier of malwares. It can classify giv
 
 Currently MLMCB implements approach of static analysis of files - it collects some static parameters of file, that are then fed into neural network, which was previously trained on a tousands of malicious and legitimate samples. 
 
+
 *Note: code not fully ported to Linux.*  
 *Note: Server now only tested on Ubuntu-18.*
 ## Installation
@@ -27,7 +28,7 @@ source ./mlmcb/bin/activate
 pip3 install -r requirements.txt
 ```
 
-## Launching
+## Description 
 Project consists of 3 parts:
 * Server - Web server for classification of PE files.
 * Static - Code for classifying PE files by their static features. 
@@ -36,7 +37,7 @@ Project consists of 3 parts:
     3) analyzer.py - server with the trained neural network on board.
 * Auxillary - Helper modules. Currently there is a script which helps to collect data in one place to further analysis.
 
-### Launching app (locally)
+## Launching (locally)
 ```
 python3 main.py
 ```

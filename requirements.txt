@@ -28,7 +28,7 @@ pythonnet==2.3.0
 pytz==2018.4
 pywebview==2.0.3
 #pywin32==223
-PyYAML==3.12
+PyYAML==5.1b1
 scikit-learn==0.19.1
 scipy==1.1.0
 six==1.11.0

@@ -1,10 +1,16 @@
+import os
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+print("Working directory:", dname)
+os.chdir(dname)
+
 from Server.server import Server
 
 import subprocess
 import sys
 import threading
 import ctypes
-import os
+
 
 def run_as_admin(argv=None, debug=False):
     shell32 = ctypes.windll.shell32
@@ -33,15 +39,11 @@ def runAnalyzer():
 
 
 if __name__ == "__main__":
-    run_as_admin()
-
-
-    abspath = os.path.abspath(__file__)
-    dname = os.path.dirname(abspath)
-    os.chdir(dname)
-
+    if os.name == 'nt':
+        # Should not be run at Linux
+        run_as_admin()
     
     threading.Thread(target=runAnalyzer).start()
 
-    server = Server(ip='192.168.0.101', port=80)
+    server = Server(ip='127.0.0.1', port=8888)
     server.run()

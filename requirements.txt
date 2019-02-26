@@ -27,14 +27,15 @@ python-dateutil==2.7.3
 pythonnet==2.3.0
 pytz==2018.4
 pywebview==2.0.3
-pywin32==223
+#pywin32==223
 PyYAML==3.12
 scikit-learn==0.19.1
 scipy==1.1.0
 six==1.11.0
 sklearn==0.0
 tensorboard==1.8.0
-tensorflow-gpu==1.8.0
+#tensorflow-gpu==1.8.0
+tensorflow==1.8.0
 termcolor==1.1.0
 Werkzeug==0.14.1
 yarl==1.2.4

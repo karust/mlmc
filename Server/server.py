@@ -7,7 +7,7 @@ from io import BytesIO
 import Server.help.multipart as mp
 #from multipart import tob
 from Static import static
-from analyzes import Analyzes, File
+from Server.analyzes import Analyzes, File
 import time
 import threading
 

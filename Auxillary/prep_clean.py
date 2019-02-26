@@ -8,6 +8,10 @@ import sys
 import ctypes
 
 def run_as_admin(argv=None, debug=False):
+    """
+    Helper function to run Python script with admin privileges
+    """
+
     shell32 = ctypes.windll.shell32
     if argv is None and shell32.IsUserAnAdmin():
         return True
@@ -28,6 +32,13 @@ def run_as_admin(argv=None, debug=False):
 
 
 def label_VS(files_path, labels_path, destination_path = None, move_files = False):
+    """
+    Labels files obtained from Virus Share.
+    files_path: Path for PE files
+    lables_path: Path for json file with labels of file
+    destination_path: Where labeled files will be moved
+    """
+
     file = open(labels_path, 'r')
     labels = json.load(file)
 
@@ -63,7 +74,9 @@ def label_VS(files_path, labels_path, destination_path = None, move_files = Fals
 
 
 def clean_fodler(folder):
-    """Delete files if not .dll .exe .sys"""
+    """
+    Delete files which are not dll, .exe .sys
+    """
 
     run_as_admin()
     my_folder = folder

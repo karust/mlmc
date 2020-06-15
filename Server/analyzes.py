@@ -1,6 +1,6 @@
 import urllib.request
 import json
-from Static import static
+#from Static import static
 import os
 import time
 import asyncio

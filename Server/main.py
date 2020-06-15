@@ -4,18 +4,18 @@ import json
 import string
 import random
 from io import BytesIO
-import Server.help.multipart as mp
+#import help.multipart as mp
 #from multipart import tob
-from Static import static
-from Server.analyzes import Analyzes, File
+#from Static import static
+from analyzes import Analyzes, File
 import time
 import threading
 
-cwd = os.getcwd()
+#cwd = os.getcwd()
 
 routes = web.RouteTableDef()
 
-upload_path = 'Server/uploaded/'
+#upload_path = 'uploaded/'
 
 files = {}
 analyzes = {}
@@ -62,7 +62,7 @@ async def handle_chunks(filename, num, data):
 @web.middleware
 async def header_middleware(request, handler):
     response = await handler(request)
-    response.headers['Access-Control-Allow-Origin'] = 'http://127.0.0.1:8000'
+    response.headers['Access-Control-Allow-Origin'] = '*'
     response.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept'
     response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
     response.headers['Server'] = 'None of your business'
@@ -72,7 +72,7 @@ async def header_middleware(request, handler):
 @routes.view("/")
 class Main(web.View):
     async def get(self):
-        return web.FileResponse(cwd+'/Server/static/index.html')
+        return web.FileResponse('./static/index.html')
 
 
 @routes.view("/completed")
@@ -174,17 +174,15 @@ class FileLoad(web.View):
 
 
 class Server(object):
-    def __init__(self, ip="127.0.0.1", port=4545):
-        self.ip = ip
-        self.port = port
+    def __init__(self):
         self.app = web.Application(middlewares=[header_middleware])
-        self.app.add_routes([web.static('/static/', cwd+'/Server/static/', follow_symlinks=True)])
+        self.app.add_routes([web.static('/static/', './static/', follow_symlinks=True)])
         self.app.add_routes(routes)
 
-    def run(self):
-        print("--- Web server is running ---")
-        web.run_app(self.app, host=self.ip, port=self.port)
+    def run(self, host, port):
+        web.run_app(self.app, host=host, port=port)
+
 
 if __name__ == "__main__":
-    server = Server(ip='127.0.0.1', port=8000)
-    server.run()
+    server = Server()
+    server.run('127.0.0.1', 8000)
